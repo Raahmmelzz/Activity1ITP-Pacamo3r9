@@ -1,23 +1,25 @@
 // src/types.ts
 
 export interface Customer {
-    customerid: number;
+    customerid?: number; 
     name: string;
+    username: string; // <-- This is the missing piece!
     email: string;
     number: string;
+    password?: string; // Optional so we don't accidentally display it everywhere
 }
 
 export interface Product {
-    productid: number;
+    productid?: number;
     productname: string;
-    price: string; // DecimalField is sent as a string via JSON
+    price: string | number; // APIs often return DecimalField as a string
 }
 
 export interface Order {
-    orderid: number;
-    customerid: Customer; // Nested object from your OrderSerializer
-    productid: Product;   // Nested object from your OrderSerializer
-    date: string;
+    orderid?: number; 
+    customerid: number; // Flat ID linking to Customer
+    productid: number;  // Flat ID linking to Product
+    date?: string;
     quantity: number;
-    price: string;
+    price: string | number; 
 }

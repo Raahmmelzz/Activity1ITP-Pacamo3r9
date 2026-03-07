@@ -12,9 +12,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    customerid = CustomerSerializer(read_only=True)
-    productid = ProductSerializer(read_only=True)
-    
     class Meta:
         model = Order
         fields = '__all__'
